@@ -46,6 +46,8 @@
    <img src="./.github/screen1.png" width="400px">
    <img src="./.github/screen2.png" width="400px">
    <img src="./.github/screen3.png" width="400px">
+   <img src="./.github/screen4.png" width="400px">
+   <img src="./.github/screen5.png" width="400px">
 </div>
 
 # :rocket: Technologies
@@ -54,6 +56,8 @@ This project was made using the follow technologies:
 * [Typescript](https://www.typescriptlang.org/)      
 * [React](https://reactjs.org/)      
 * [Next.js](https://nextjs.org/)  
+* [Next Auth](https://next-auth.js.org/) 
+* [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
 * [RC-Slider](https://github.com/react-component/slider/)
 * [JSON-Server](https://github.com/typicode/json-server)
 * [SASS](https://sass-lang.com/)

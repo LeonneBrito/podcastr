@@ -1,17 +1,17 @@
-import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
-import { usePlayer } from '../../contexts/PlayerContext'
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import { usePlayer } from '../../contexts/PlayerContext';
 
 import Slider from 'rc-slider';
 
-import 'rc-slider/assets/index.css'
+import 'rc-slider/assets/index.css';
 
-import styles from './styles.module.scss'
-import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString'
+import styles from './styles.module.scss';
+import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 
 export function Player() {
-  const audioRef = useRef<HTMLAudioElement>(null)
-  const [progress, setProgress] = useState(0)
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [progress, setProgress] = useState(0);
 
   const { 
     episodeList, 
@@ -30,7 +30,7 @@ export function Player() {
     clearPlayerState
   } = usePlayer()
 
-  const episode = episodeList[currentEpisodeIndex]
+  const episode = episodeList[currentEpisodeIndex];
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -38,31 +38,31 @@ export function Player() {
     }
     
     if (isPlaying) {
-      audioRef.current.play()
+      audioRef.current.play();
     } else {
-      audioRef.current.pause()
+      audioRef.current.pause();
     }
-  }, [isPlaying])
+  }, [isPlaying]);
 
   function setupProgressListener() {
     audioRef.current.currentTime = 0;
 
     audioRef.current.addEventListener('timeupdate', () => {
-      setProgress(Math.floor(audioRef.current.currentTime))
+      setProgress(Math.floor(audioRef.current.currentTime));
     })
   }
 
   function handleSeek(amount: number) {
     audioRef.current.currentTime = amount;
 
-    setProgress(amount)
+    setProgress(amount);
   }
 
   function handleEpisodeEnded() {
     if (hasNext) {
       playNext()
     } else {
-      clearPlayerState()
+      clearPlayerState();
     }
   }
 

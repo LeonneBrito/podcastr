@@ -1,4 +1,6 @@
 import { GetServerSideProps } from "next";
+import { useSession } from 'next-auth/client'
+import Skeleton from 'react-loading-skeleton';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,6 +14,7 @@ import { convertDurationToTimeString } from "../utils/convertDurationToTimeStrin
 import styles from './home.module.scss';;
 import { usePlayer } from "../contexts/PlayerContext";
 import Head from "next/head";
+import { SkeletonTable } from "../components/SkeletonTable";
 
 type Episode = {
   id: string;
@@ -31,11 +34,70 @@ type HomeProps = {
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
   const { playList } = usePlayer()
+  const [ session, loading ] = useSession()
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
 
+  return <>
+    {!session && <>
+      <div className={styles.homepage}>
+        <Head>
+          <title>Login | Podcastr</title>
+        </Head>
+        <section className={styles.latestEpisodes}>
+          <h2>Últimos lançamentos</h2>
+          <ul>
+            <li>
+              <Skeleton circle={true} height={96} width={96} />
+              <div className={styles.episodeDetailsSkeleton}>
+                <a><Skeleton width={400} /></a>
+                <p><Skeleton width={250} /></p>
+                <span><Skeleton width={200} /></span>
+                <button type="button">
+                  <img src="/play-green.svg" alt="Tocar episódio"/>
+                </button>
+              </div>
+            </li>
+            <li>
+              <Skeleton circle={true} height={96} width={96} />
+              <div className={styles.episodeDetailsSkeleton}>
+                <a><Skeleton width={400} /></a>
+                <p><Skeleton width={300} /></p>
+                <span><Skeleton width={200} /></span>
+                <button type="button">
+                  <img src="/play-green.svg" alt="Tocar episódio"/>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section className={styles.allEpisodes}>
+          <h2>Todos episódios</h2>
+          <table cellSpacing={0}>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Podcast</th>
+                  <th>Integrantes</th>
+                  <th>Duração</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
 
-  return (
+              <tbody>
+                <SkeletonTable />
+                <SkeletonTable />
+                <SkeletonTable />
+                <SkeletonTable />
+                <SkeletonTable />
+                <SkeletonTable />
+              </tbody>
+          </table>
+        </section>
+      </div>
+    </>}
+    {session && <>
     <div className={styles.homepage}>
       <Head>
         <title>Home | Podcastr</title>
@@ -80,6 +142,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                 <th>Integrantes</th>
                 <th>Duração</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
 
@@ -114,7 +177,8 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
         </table>
       </section>
     </div>
-  )
+    </>}
+  </>
 }
 
 export const getStaticProps: GetServerSideProps = async () => {
@@ -124,7 +188,7 @@ export const getStaticProps: GetServerSideProps = async () => {
       _sort: 'published_at',
       _order: 'desc'
     }
-  })
+  });
 
   const episodes = data.map(episode => ({
     id: episode.id,
@@ -137,10 +201,10 @@ export const getStaticProps: GetServerSideProps = async () => {
     duration: Number(episode.file.duration),
     durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
     url: episode.file.url,
-  }))
+  }));
 
   const latestEpisodes = episodes.slice(0, 2);
-  const allEpisodes = episodes.slice(2, episodes.length)
+  const allEpisodes = episodes.slice(2, episodes.length);
 
   return {
     props: {
