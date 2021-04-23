@@ -47,7 +47,6 @@
    <img src="./.github/screen2.png" width="400px">
    <img src="./.github/screen3.png" width="400px">
    <img src="./.github/screen4.png" width="400px">
-   <img src="./.github/screen5.png" width="400px">
 </div>
 
 # :rocket: Technologies
