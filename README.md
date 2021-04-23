@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  🎧 The best for you to hear, always.Next Level Week #05 - <a href="https://github.com/Rocketseat">@Rocketseat</a>
+  🎧 The best for you to hear, always. Next Level Week #05 - <a href="https://github.com/Rocketseat">@Rocketseat</a>
 </p>
 
 <div align="center">
