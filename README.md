@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  🤸‍♂️ Move It is a project to help people to make more exercises. Next Level Week #05 - <a href="https://github.com/Rocketseat">@Rocketseat</a>
+  🎧 The best for you to hear, always.Next Level Week #05 - <a href="https://github.com/Rocketseat">@Rocketseat</a>
 </p>
 
 <div align="center">
