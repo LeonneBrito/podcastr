@@ -13,8 +13,8 @@
   </a>
   <img alt="License" src="https://img.shields.io/github/license/LeonneBrito/podcastr?color=%235965E0" />
   <img alt="Issues" src="https://img.shields.io/github/issues/LeonneBrito/podcastr?color=%235965E0">
-  <a href="mailto:contato@leonnebrito.com.br">
-   <img alt="Email" src="https://img.shields.io/badge/-contato%40leonnebrito.com.br-%23525DCB" />
+  <a href="mailto:britoleonne@gmail.com">
+   <img alt="Email" src="https://img.shields.io/badge/-britoleonne%40gmail.com-%23525DCB" />
   </a>
 </p>
 
